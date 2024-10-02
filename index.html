@@ -30,20 +30,34 @@
             padding: 0 10px;
             color: white;
         }
-        .middle {
-            height: 23.33%;
+        .met{
+          height: 30%;
+        }
+        .p{
+          position: absolute;
+          
+          bottom: 66%;
+          right: 40%;
+          color: white;
+          font-size: 2em;
+        }
+        .middle1 {
+            height: 50%;
             display: flex;
-            background: linear-gradient(to right, #005daa 50%, #e31837 50%);
+            background: linear-gradient(to right, #337dbb 50%, #e8465f 50% ) ;
             background-size: 200% 100%;
             animation: slide 5s infinite;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2em; /* Increased font size for "meow" */
         }
+        .middle {
+            height: 50%;
+            display: flex;
+            background: linear-gradient(to right, #005daa 50%, #e31837 50% ) ;
+            background-size: 200% 100%;
+            animation: slide 5s infinite;
+        }
+        
         @keyframes slide {
             0% { background-position: 50% 0%; }
-           
             100% { background-position: -150% 0%; }
         }
         .content {
@@ -52,15 +66,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
-        .close{
-               margin-right: -10%;
-               margin-bottom:-20%;
-               front-size:10px;
-              }
+        .close {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 10px;
+        }
         .bottom {
             height: 20%;
-            background-color: black;
+            background-color: #005daa;
             color: white;
             display: flex;
             flex-direction: column;
@@ -76,17 +92,25 @@
     </style>
 </head>
 <body>
+  
     <div class="container">
         <div class="top">
             <div>Back</div>
             <div style="flex-grow: 1; text-align: center;">Ticket</div>
         </div>
-        <div class="middle">
-            <div>METRO</div>
-        </div>
+        
+          <div class = "met">
+            <p class = "p">METRO</p>
+            <div class="middle1">
+            </div>
+            <div class="middle">
+            </div>
+          </div>
+          
+          
         <div class="content">
-            <img src="image0.jpeg" alt="image0.jpeg" style="width: 20%; height: 70%;">
-            <p class = "close">CLOSE X</p>
+            <img src="image0.jpeg" alt="image0.jpeg" style="width: 25%; height: 25%;">
+            <p class="close">CLOSE X</p>
         </div>
         <div class="bottom">
             <div class="time" id="time"></div>
@@ -97,9 +121,9 @@
         function updateTime() {
             const now = new Date();
             now.setDate(now.getDate() + 1);
-            const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', hour12: true };
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: true };
             const formattedTime = now.toLocaleString('en-US', options).replace(',', '');
-            document.getElementById('time').innerText = formattedTime.split(' ')[0] + ' ' + formattedTime.split(' ')[1];
+            document.getElementById('time').innerText = formattedTime.split(' ')[0] + ' ' + formattedTime.split(' ')[1] + ' AM';
         }
         updateTime();
         setInterval(updateTime, 60000); // Update every minute
